@@ -1,19 +1,17 @@
-# Qwen-VL QLoRA Feasibility Experiments
+# Qwen-VL QLoRA Experiments
 
-This repository contains initial feasibility experiments for applying
-QLoRA (Quantized Low-Rank Adaptation) to Qwen2.5-VL models.
+This repository contains practical feasibility experiments for applying QLoRA
+(Quantized Low-Rank Adaptation) to Qwen2.5-VL vision–language models.
 
-## Objective
-The goal of this work is to verify whether QLoRA can be applied to
-large vision–language models without breaking multimodal processing.
+## Overview
+The goal is to validate that QLoRA can be used with Qwen-VL models while preserving
+multimodal functionality and inference stability.
 
-## What is Verified
-- 4-bit quantized loading of Qwen2.5-VL
-- Successful LoRA adapter injection into the language backbone
-- Correct multimodal input construction using image placeholders
-- End-to-end forward pass and text generation
+## Scope
+- 4-bit quantized model loading
+- LoRA-based parameter-efficient adaptation of the language backbone
+- Multimodal input processing with image placeholders
+- End-to-end multimodal inference and generation
 
-## Notebook
-- `notebooks/qlora_qwen_vl_smoke_test.ipynb`  
-  Contains a minimal smoke test validating QLoRA compatibility.
-
+## Artifacts
+- `notebooks/qlora_qwen_vl_smoke_test.ipynb` — QLoRA compatibility smoke test

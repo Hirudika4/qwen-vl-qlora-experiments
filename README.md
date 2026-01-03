@@ -1,59 +1,55 @@
 # Qwen-VL QLoRA Feasibility Experiments
 
-This repository contains structured feasibility experiments for applying
-QLoRA (Quantized Low-Rank Adaptation) to Qwen2.5-VL vision–language models.
-The focus is on validating memory-efficient fine-tuning and inference setups
-while preserving multimodal correctness and model stability.
+This repository contains feasibility and validation experiments for applying
+QLoRA (Quantized Low-Rank Adaptation) to **Qwen2.5-VL** vision–language models.
+The work focuses on validating memory-efficient adaptation and inference
+pipelines while preserving correct multimodal behavior.
 
-## Objectives
-- Validate 4-bit quantized loading of Qwen2.5-VL models
-- Verify LoRA-based adaptation of the language backbone
-- Ensure vision encoder and multimodal projector remain stable
-- Confirm correct handling of multimodal inputs using image placeholders
-- Evaluate Unsloth as a memory-optimized backend for QLoRA experiments
+## Purpose
+Large vision–language models provide strong multimodal reasoning capabilities
+but are challenging to adapt under limited GPU memory. QLoRA enables efficient
+fine-tuning through 4-bit quantization and low-rank updates.
 
-## Scope
-The current scope focuses on feasibility and correctness rather than
-full-scale fine-tuning or benchmark performance.
+The goal of this project is to determine whether QLoRA can be safely applied to
+Qwen-VL models without breaking:
+- image–text alignment
+- multimodal routing
+- inference stability and generation behavior
 
-Included:
-- Multimodal QLoRA smoke tests
-- Forward pass and generation validation
-- Real-image inference under quantization
-- Unsloth-based memory-efficient model loading
-
-Excluded (planned for later stages):
-- Large-scale training runs
-- Accuracy benchmarking across datasets
-- Full 70B model fine-tuning
+## What This Repository Validates
+- 4-bit quantized loading of Qwen2.5-VL models
+- LoRA-based parameter-efficient adaptation of the language backbone
+- Stability of the vision encoder and multimodal projector
+- Correct handling of multimodal inputs using image placeholder tokens
+- End-to-end multimodal forward pass and text generation
+- Compatibility of **Unsloth** with QLoRA for memory-optimized execution
 
 ## Experiments
-### Baseline QLoRA Validation
+### Baseline QLoRA Smoke Test
 - Loads Qwen-VL with 4-bit quantization
-- Applies LoRA adapters to the language backbone
+- Injects LoRA adapters into the language backbone
 - Verifies end-to-end multimodal inference
 
-### Unsloth-Optimized QLoRA Validation
-- Uses Unsloth for optimized 4-bit loading and memory efficiency
-- Confirms LoRA injection does not disrupt multimodal routing
-- Validates forward pass and generation using real images
+### Unsloth-Optimized QLoRA Smoke Test
+- Uses Unsloth for optimized 4-bit loading and reduced memory footprint
+- Confirms LoRA injection does not disrupt multimodal processing
+- Validates inference and generation using real images
 
 ## Notebooks
 - `notebooks/qlora_qwen_vl_7B_smoke_test.ipynb`  
-  Baseline QLoRA smoke test for Qwen-VL without Unsloth.
+  Baseline QLoRA smoke test for Qwen-VL.
 
-- `notebooks/qwen_vl_qlora_unsloth_smoke_test.ipynb`  
-  QLoRA smoke test using Unsloth, validating memory-efficient multimodal
+- `notebooks/qlora_qwen_vl_7B_unsloth_smoke_test.ipynb`  
+  Unsloth-optimized QLoRA smoke test validating memory-efficient multimodal
   inference and generation.
 
 ## Environment
 - Frameworks: PyTorch, Hugging Face Transformers
 - Quantization: bitsandbytes (4-bit)
 - Optimization: LoRA / QLoRA
-- Hardware: Google Colab (T4 GPU) for smoke tests
+- Hardware: Google Colab (T4 GPU) for feasibility testing
 
 ## Status
-This repository currently demonstrates feasibility and technical validation.
-The next phase will focus on memory benchmarking, controlled comparisons
-(QLoRA vs FP16), and scaling analysis toward larger model variants.
-
+This repository currently serves as a technical validation and feasibility
+baseline. Results from these experiments will inform subsequent scaling and
+benchmarking efforts.

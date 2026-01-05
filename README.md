@@ -1,9 +1,9 @@
 # Qwen-VL QLoRA Feasibility Experiments
 
-This repository contains structured feasibility experiments for applying
-QLoRA (Quantized Low-Rank Adaptation) to Qwen2.5-VL vision–language models.
-The focus is on validating memory-efficient fine-tuning and inference setups
-while preserving multimodal correctness and model stability.
+This repository contains feasibility and validation experiments for applying
+QLoRA (Quantized Low-Rank Adaptation) to **Qwen2.5-VL** vision–language models.
+The work focuses on validating memory-efficient adaptation and inference
+pipelines while preserving correct multimodal behavior.
 
 ## Objectives
 - Validate 4-bit quantized loading of Qwen2.5-VL models
@@ -58,10 +58,10 @@ Included:
 
 ## Notebooks
 - `notebooks/qlora_qwen_vl_7B_smoke_test.ipynb`  
-  Baseline QLoRA smoke test for Qwen-VL without Unsloth.
+  Baseline QLoRA smoke test for Qwen-VL.
 
-- `notebooks/qwen_vl_qlora_unsloth_smoke_test.ipynb`  
-  QLoRA smoke test using Unsloth, validating memory-efficient multimodal
+- `notebooks/qlora_qwen_vl_7B_unsloth_smoke_test.ipynb`  
+  Unsloth-optimized QLoRA smoke test validating memory-efficient multimodal
   inference and generation.
 
 - `notebooks/qwen_vl_qlora_unsloth_batchsize_memory_test_ipynb.ipynb`  
